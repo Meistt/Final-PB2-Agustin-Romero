@@ -44,17 +44,7 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	}
 	
 
-	public Integer getCantVacunasCovid() {
-		return cantVacunasCovid;
-	}
-
-	public Integer getCantVacunasHepatitis() {
-		return cantVacunasHepatitis;
-	}
-
-	public Integer getCantVacunasRubeola() {
-		return cantVacunasRubeola;
-	}
+	
 
 	@Override
 	public int compareTo(Persona o) {
@@ -62,10 +52,9 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 		return this.dni.compareTo(o.dni);
 		
 	}
-	
-	
+
 	@Override
-	public Boolean vacunarseContraCovid(String nombreVacuna) {
+	public Boolean primeraDosisCovid(String nombreVacuna) {
 		if(this.cantVacunasCovid == 0 && this.vacuna.getNombreVacuna().equals(nombreVacuna)) {
 			this.cantVacunasCovid= 1;
 			return true;
@@ -99,6 +88,49 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	@Override
 	public void vacunarseContraRubeola() {
 		
+	}
+	
+	public Integer getCantVacunasCovid() {
+		return cantVacunasCovid;
+	}
+
+	public Integer getCantVacunasHepatitis() {
+		return cantVacunasHepatitis;
+	}
+
+	public Integer getCantVacunasRubeola() {
+		return cantVacunasRubeola;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
 	}
 
 
