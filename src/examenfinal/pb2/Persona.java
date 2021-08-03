@@ -5,7 +5,6 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	private String nombre;
 	private Integer dni;
 	private Integer cantVacunasCovid;
-	private Integer cantVacunasCovid2;
 	private Integer cantVacunasHepatitis;
 	private Integer cantVacunasRubeola;
 	private Vacuna vacuna;
@@ -18,6 +17,44 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 		cantVacunasHepatitis = 0;
 		cantVacunasRubeola = 0;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
+
+	public Vacuna getVacuna() {
+		return vacuna;
+	}
+
+	public void setVacuna(Vacuna vacuna) {
+		this.vacuna = vacuna;
+	}
+	
+
+	public Integer getCantVacunasCovid() {
+		return cantVacunasCovid;
+	}
+
+	public Integer getCantVacunasHepatitis() {
+		return cantVacunasHepatitis;
+	}
+
+	public Integer getCantVacunasRubeola() {
+		return cantVacunasRubeola;
+	}
 
 	@Override
 	public int compareTo(Persona o) {
@@ -25,9 +62,11 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 		return this.dni.compareTo(o.dni);
 		
 	}
+	
+	
 	@Override
-	public Boolean vacunarseContraCovid() {
-		if(this.cantVacunasCovid == 0 && this.nombre.equals(nombre)) {
+	public Boolean vacunarseContraCovid(String nombreVacuna) {
+		if(this.cantVacunasCovid == 0 && this.vacuna.getNombreVacuna().equals(nombreVacuna)) {
 			this.cantVacunasCovid= 1;
 			return true;
 		}else {
@@ -37,16 +76,19 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	}
 
 	@Override
-	public Boolean segundaDosisCovid() throws NoCovidVaccineException {
+	public Boolean segundaDosisCovid(String nombreVacuna) throws NoCovidVaccineException {
+		this.cantVacunasCovid = 1;
 		Boolean estadoVacunacion = null;
-		if(this.cantVacunasCovid == 1 && this.nombre.equals(nombre)) {
+		if(this.cantVacunasCovid == 1 && this.vacuna.getNombreVacuna().equals(nombreVacuna)) {
+			this.cantVacunasCovid = 2;
 			estadoVacunacion = true;
 			return estadoVacunacion;
 		}else if(this.cantVacunasCovid >=2 && !this.nombre.equals(nombre)) {
 			estadoVacunacion= false;
-			throw new NoCovidVaccineException();
+			return estadoVacunacion;
+			
 		}
-		return estadoVacunacion;
+		throw new NoCovidVaccineException();
 	}
 
 	@Override
@@ -58,4 +100,6 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	public void vacunarseContraRubeola() {
 		
 	}
+
+
 }
