@@ -42,9 +42,6 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	public void setVacuna(Vacuna vacuna) {
 		this.vacuna = vacuna;
 	}
-	
-
-	
 
 	@Override
 	public int compareTo(Persona o) {
@@ -81,8 +78,9 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	}
 
 	@Override
-	public void vacunarseContraHepatitis() {
+	public Boolean vacunarseContraHepatitis(String tipoHepatitis) {
 		
+		return null;
 	}
 
 	@Override
@@ -131,6 +129,13 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
+	}
+
+	public void HepatitisPositivo(Enfermedad hepatitis, Boolean estadoEnfermedad) {
+		if(estadoEnfermedad == true) {
+			vacunarseContraHepatitis("Hepatitis");
+		}
+		
 	}
 
 

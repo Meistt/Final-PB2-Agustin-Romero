@@ -82,8 +82,17 @@ public class TestFinal {
 	}
 	
 	@Test
-	public void queUnPacienteHayaTenidoHepatitis() {
+	public void queUnPacienteHayaTenidoHepatitisYNoPuedaVacunarse() {
+		
 		Persona paciente = new Persona ("Milton", 42716789, null);
+		
+		Enfermedad hepatitis = new Hepatitis("Hepatitis", "A"); 
+		
+		Boolean estadoEnfermedad = true;
+		
+		paciente.HepatitisPositivo(hepatitis, estadoEnfermedad);
+		
+		
 	}
 	
 }

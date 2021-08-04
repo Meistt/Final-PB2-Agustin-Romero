@@ -1,9 +1,9 @@
 package examenfinal.pb2;
 
-public class Covid extends Vacuna{
+public class Covid extends Enfermedad {
 
-	public Covid(String nombreVacuna) {
-		super(nombreVacuna);
+	public Covid(String nombre) {
+		super(nombre);
 	}
 
 }

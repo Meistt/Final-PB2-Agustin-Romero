@@ -4,7 +4,7 @@ public interface IVacunacion {
 
 	public Boolean primeraDosisCovid(String nombreVacuna);
 	public Boolean segundaDosisCovid(String nombreVacuna) throws NoCovidVaccineException;
-	public void vacunarseContraHepatitis();
+	public Boolean vacunarseContraHepatitis(String tipoHepatitis);
 	public void vacunarseContraRubeola();
 	
 }

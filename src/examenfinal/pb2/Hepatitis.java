@@ -1,11 +1,11 @@
 package examenfinal.pb2;
 
-public class Hepatitis extends Vacuna{
+public class Hepatitis extends Enfermedad{
 	
 	private String tipo;
 	
-	public Hepatitis(String nombreVacuna, String tipo) {
-		super(nombreVacuna);
+	public Hepatitis(String nombre, String tipo) {
+		super(nombre);
 		this.tipo = tipo;
 	}
 
@@ -16,6 +16,5 @@ public class Hepatitis extends Vacuna{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
 
 }
