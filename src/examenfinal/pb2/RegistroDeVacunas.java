@@ -9,17 +9,26 @@ public class RegistroDeVacunas {
 	private Persona persona;
 	private Set<Persona> listaVacunados;
 	
-	public RegistroDeVacunas(String centroVacunacion, Persona persona) {
+	public RegistroDeVacunas(String centroVacunacion) {
 		this.centroVacunacion = centroVacunacion;
-		this.persona = persona;
 		this.listaVacunados = new TreeSet<Persona>();
 	}
 	
 	public void registarVacunaCovid19(Persona paciente) throws PacienteVacunadoException {
-		if(persona.getCantVacunasCovid() == 2) {
+		if(paciente.getCantVacunasCovid() == 2) {
 			this.listaVacunados.add(paciente);
-		}else if(persona.getCantVacunasCovid() > 2) {
+		}else if(paciente.getCantVacunasCovid() > 2) {
 			throw new PacienteVacunadoException();
 		}
 	}
+
+	public Set<Persona> getListaVacunados() {
+		return listaVacunados;
+	}
+
+	public void setListaVacunados(Set<Persona> listaVacunados) {
+		this.listaVacunados = listaVacunados;
+	}
+	
+	
 }
