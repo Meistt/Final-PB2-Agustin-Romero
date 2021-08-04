@@ -78,9 +78,15 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 	}
 
 	@Override
-	public Boolean vacunarseContraHepatitis(String tipoHepatitis) {
+	public Boolean vacunarseContraHepatitis(Hepatitis hepatitis) throws NoPuedeVacunarseParaEstaEnfermedadException {
 		
-		return null;
+		Boolean estado = false;
+		
+		if(hepatitis.getTipo().equals("A") || hepatitis.getNombre().equals("B") || hepatitis.getTipo().equals("C")){
+			throw new NoPuedeVacunarseParaEstaEnfermedadException();
+		}else
+			estado= true;
+		return estado;
 	}
 
 	@Override
@@ -131,10 +137,17 @@ public class Persona implements IVacunacion, Comparable <Persona>{
 		return true;
 	}
 
-	public void HepatitisPositivo(Enfermedad hepatitis, Boolean estadoEnfermedad) {
-		if(estadoEnfermedad == true) {
-			vacunarseContraHepatitis("Hepatitis");
-		}
+	public boolean HepatitisPositivo(Enfermedad hepatitis, Boolean estadoEnfermedad) throws NoPuedeVacunarseParaEstaEnfermedadException {
+		
+		Boolean estadoHepatitis= vacunarseContraHepatitis((Hepatitis) hepatitis);
+		Boolean retorno;
+		
+		if(estadoHepatitis == false) {
+			retorno = false;
+		}else
+			retorno = true;
+		return retorno;
+		
 		
 	}
 

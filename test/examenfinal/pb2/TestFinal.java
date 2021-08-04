@@ -1,6 +1,7 @@
 package examenfinal.pb2;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.TreeSet;
@@ -82,15 +83,16 @@ public class TestFinal {
 	}
 	
 	@Test
-	public void queUnPacienteHayaTenidoHepatitisYNoPuedaVacunarse() {
+	public void queUnPacienteHayaTenidoHepatitisYNoPuedaVacunarse() throws NoPuedeVacunarseParaEstaEnfermedadException {
 		
 		Persona paciente = new Persona ("Milton", 42716789, null);
 		
-		Enfermedad hepatitis = new Hepatitis("Hepatitis", "A"); 
+		Hepatitis hepatitis = new Hepatitis("Hepatitis", "A");
 		
-		Boolean estadoEnfermedad = true;
+		Boolean ve= paciente.vacunarseContraHepatitis(hepatitis);
 		
-		paciente.HepatitisPositivo(hepatitis, estadoEnfermedad);
+		assertFalse(ve);
+		
 		
 		
 	}
